@@ -1,20 +1,33 @@
 package Runners;
 
-import NewShit.*;
+import classes.Car;
 
 public class Main2 {
     public static void main(String[] args) {
-        Player player = new Player();
-        Zombie zombie = new Zombie();
-        zombie.attack("dylan",5);
-        player.attack("omer",7);
-        System.out.println("is zombie alive?");
-        zombie.printIsAlive(11);
-        System.out.println("is player alive?");
-        player.printIsAlive(34);
-        zombie.printGreeting("Dylan");
-        player.printGreeting("Omer");
-        zombie.setGreet(new PlayerGreeting());
-        zombie.printGreeting("Igor");
+
+        Thread car = new Thread(new Car (2,"Omer",5));
+        Thread car2 = new Thread(new Car(3,"Dylan",3));
+        Thread car3 = new Thread(() -> {
+            System.out.println("hello");
+        });
+        car3.start();
+//        car.start();
+//        car2.start();
+        Thread car4 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int counter = 0;
+                System.out.println("I am the best ");
+                for (int i = 0; i < 10; i++){
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("nana " + ++counter);
+                }
+            }
+        });
+        car4.start();
     }
 }

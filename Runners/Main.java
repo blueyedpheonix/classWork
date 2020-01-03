@@ -1,53 +1,19 @@
 package Runners;
 
-import Others.Person;
-
-import java.lang.reflect.Array;
-import java.util.*;
+import classes.Coupon;
+import classes.coponSystem;
 
 public class Main {
     public static void main(String[] args) {
-        List<String> friends = new ArrayList<>();
-        friends.add("Dylan");
-        friends.add("Omer");
-        friends.add("Jake");
-        friends.add("Yonatan");
-        friends.add("Edan");
-        System.out.println(friends.toString());
-        System.out.println();
-        for(String name: friends){
-            System.out.println(name);
-        }
-        friends.remove("Dylan");
-        System.out.println();
-        for(String name: friends){
-            System.out.println(name);
-        }
-        for(int i = 0; i < friends.size(); i++){
-            if(friends.get(i) == "Jake")
-                friends.remove(i);
-        }
-
-        System.out.println();
-
-        for(String name: friends){
-            System.out.println(name);
-        }
-
-        Set<String> newFriends = new HashSet<>();
-        newFriends.add("enosh");
-        newFriends.add("Soren");
-        newFriends.add("Sara");
-        newFriends.add("Gilad");
-        newFriends.add("Gilad");
-        newFriends.add("maor");
-        System.out.println(newFriends);
-        newFriends.remove("maor");
-        System.out.println(newFriends);
-
-
-
+        coponSystem a = coponSystem.getInstance();
+        coponSystem b = coponSystem.getInstance();
+        a.addCoupon(new Coupon(54));
+        a.addCoupon(new Coupon(34));
+        b.addCoupon(new Coupon(567));
+        b.addCoupon(new Coupon(754));
+        b.addCoupon(new Coupon(3));
+        System.out.println(a.getAll());
+        System.out.println(b.getAll());
 
     }
 }
-
